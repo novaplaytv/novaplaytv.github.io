@@ -30,4 +30,4 @@ Puedes ver la página en vivo aquí: [https://novaplaytv.github.io/](https://nov
 ---
 © 2026 NOVAPLAY TV
 
-© 2010 -� 2010 - 2026 - MSGT. TODOS LOS DERECHOS RESERVADOS. 
+© 2010 - 2026 - MSGT. TODOS LOS DERECHOS RESERVADOS. 
