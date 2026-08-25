@@ -30,4 +30,4 @@ Puedes ver la página en vivo aquí: [https://novaplaytv.github.io/](https://nov
 ---
 Desarrollado con ❤️ por ThedarkSoldier996
 
-© 2010 - 2026 M.S.G.T SOLUTIONS. 
+© 2010 -� 2010 - 2026 - MSGT. TODOS LOS DERECHOS RESERVADOS. 
