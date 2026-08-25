@@ -1,4 +1,4 @@
-# NovaPlay IPTV - Official Landing Page
+﻿# NovaPlay IPTV - Official Landing Page
 
 Bienvenido al repositorio oficial del sitio web de **NovaPlay**, la solución definitiva de IPTV optimizada para dispositivos con recursos limitados.
 
@@ -28,6 +28,6 @@ Puedes ver la página en vivo aquí: [https://novaplaytv.github.io/](https://nov
 *   **GitHub Pages**: Alojamiento gratuito y de alta disponibilidad.
 
 ---
-Desarrollado con ❤️ por ThedarkSoldier996
+© 2026 NOVAPLAY TV
 
-© 2010 -� 2010 - 2026 - MSGT. TODOS LOS DERECHOS RESERVADOS. 
+© 2010 -� 2010 - 2026 - MSGT. TODOS LOS DERECHOS RESERVADOS. 
