@@ -7,7 +7,7 @@ Bienvenido al repositorio oficial del sitio web de **NovaPlay**, la solución de
 Este repositorio contiene el código fuente de la página de aterrizaje (landing page) de NovaPlay, diseñada para ofrecer una experiencia de usuario rápida y directa, facilitando el acceso a las versiones estables de la aplicación y sus novedades.
 
 ## 🌐 Visita el sitio
-Puedes ver la página en vivo aquí: [https://thedarksoldier996.github.io/](https://thedarksoldier996.github.io/)
+Puedes ver la página en vivo aquí: [https://novaplaytv.github.io/](https://novaplaytv.github.io/)
 
 ## 📦 Características de la App NovaPlay
 
