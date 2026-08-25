@@ -211,13 +211,13 @@
 
 </head>
 <body>
-<nav class="nova-global-nav"><div class="nova-global-nav-inner"><a class="nova-global-brand" href="https://novaplaytv.github.io/"><img src="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp" alt="NOVAPLAY">NOVAPLAY</a><a href="https://novaplaytv.github.io/" class="active">INICIO</a><a href="https://novaplaytv.github.io/novaimg/" class="">NOVAIMG</a><a href="https://novaplaytv.github.io/DEMO-NOVAPLAY/" class="">DEMO</a><a href="https://novaplaytv.github.io/panel-canales/" class=" panel-link">PANEL CANALES</a><a href="https://novaplaytv.github.io/novaimg/actualizar-icono/" class="panel-link">PANEL IMAGENES</a></div></nav>
+<nav class="nova-global-nav"><div class="nova-global-nav-inner"><a class="nova-global-brand" href="https://novaplaytv.github.io/"><img src="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp" alt="NOVAPLAY">NOVAPLAY</a><a href="https://novaplaytv.github.io/" class="active">INICIO</a><a href="https://novaplaytv.github.io/novaimg/" class="">NOVAIMG</a><a href="https://novaplaytv.github.io/DEMO-NOVAPLAY/" class="">DEMO</a><a href="https://novaplaytv.github.io/panel-canales/" class=" panel-link">PANEL CANALES</a><a href="https://novaplaytv.github.io/novaimg/actualizar-icono/" class="panel-link">PANEL IM√ÅGENES</a></div></nav>
 
     <header>
         <img src="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp" alt="NOVAPLAY Logo" class="logo-img">
         <br>
-        <div id="version-badge" class="version-badge">Cargando versiÛn...</div>
-        <p class="tagline">La plataforma de IPTV m·s robusta, optimizada para Smart TVs y dispositivos con 1GB de RAM. Disfruta sin lÌmites.</p>
+        <div id="version-badge" class="version-badge">Cargando versi√≥n...</div>
+        <p class="tagline">La plataforma de IPTV m√°s robusta, optimizada para Smart TVs y dispositivos con 1GB de RAM. Disfruta sin l√≠mites.</p>
 
         <div class="download-flex-container">
             <a href="https://mrghnngupolsgatcmevw.supabase.co/storage/v1/object/public/novaplayestable/novaplay.apk" class="download-btn">
@@ -233,38 +233,38 @@
 
     <section class="features">
         <div class="feature-card">
-            <h3>?? Rendimiento Pro</h3>
-            <p>Motor de video ultra-eficiente con optimizaciÛn SIMD y gestiÛn inteligente de buffers para evitar congelamientos.</p>
+            <h3>üöÄ Rendimiento Pro</h3>
+            <p>Motor de video ultra-eficiente con optimizaci√≥n SIMD y gesti√≥n inteligente de buffers para evitar congelamientos.</p>
         </div>
         <div class="feature-card">
-            <h3>??? Blindaje de Red</h3>
-            <p>ConexiÛn segura mediante DNS Over HTTPS (DoH) y protocolos adaptativos para m·xima estabilidad.</p>
+            <h3>üõ°Ô∏è Blindaje de Red</h3>
+            <p>Conexi√≥n segura mediante DNS Over HTTPS (DoH) y protocolos adaptativos para m√°xima estabilidad.</p>
         </div>
         <div class="feature-card">
-            <h3>?? DiseÒado para TV</h3>
-            <p>Interfaz intuitiva con control total desde el mando a distancia. Zapping r·pido y navegaciÛn fluida.</p>
+            <h3>üì∫ Dise√±ado para TV</h3>
+            <p>Interfaz intuitiva con control total desde el mando a distancia. Zapping r√°pido y navegaci√≥n fluida.</p>
         </div>
     </section>
 
     <div class="changelog-section">
         <h2 id="changelog-title">Novedades</h2>
         <div id="changelog-items">
-            <!-- Cargando din·micamente... -->
+            <!-- Cargando din√°micamente... -->
         </div>
     </div>
 
     <footer>
-        <p>© 2026 NOVAPLAY TV</p>
-        <p>? 2010 - 2026 - MSGT. TODOS LOS DERECHOS RESERVADOS</p>
+        <p>¬© 2026 NOVAPLAY TV</p>
+        <p>¬© 2010 - 2026 - MSGT. TODOS LOS DERECHOS RESERVADOS</p>
     </footer>
 
     <script>
         fetch("https://raw.githubusercontent.com/novaplaytv/updater/main/updatestable.json") 
             .then(response => response.json()) 
             .then(data => { 
-                // Actualizar versiÛn en la cabecera 
-                document.getElementById("version-badge").textContent = "VersiÛn Estable " + data.version; 
-                document.getElementById("changelog-title").textContent = "øQuÈ hay de nuevo en la v" + data.version + "?"; 
+                // Actualizar versi√≥n en la cabecera
+                document.getElementById("version-badge").textContent = "Versi√≥n Estable " + data.version;
+                document.getElementById("changelog-title").textContent = "¬øQu√© hay de nuevo en la v" + data.version + "?";
  
                 // Cargar changelog 
                 const container = document.getElementById("changelog-items"); 
@@ -279,7 +279,7 @@
                 console.error("Error cargando changelog:", err); 
                 document.getElementById("version-badge").textContent = "NOVAPLAY IPTV"; 
                 const container = document.getElementById("changelog-items"); 
-                container.innerHTML = "<div>Error al cargar las novedades. Intenta refrescar la p·gina.</div>"; 
+                container.innerHTML = "<div>Error al cargar las novedades. Intenta refrescar la p√°gina.</div>";
             }); 
     </script> 
  
@@ -298,7 +298,7 @@ function abrirDemoNovaPlay(){
 function pedirDemoPopup(){
   const old=document.getElementById('demo-popup-permission'); if(old) old.remove();
   document.body.insertAdjacentHTML('beforeend',
-    '<div class="demo-popup-permission" id="demo-popup-permission"><div class="demo-popup-box"><h2>ABRIR DEMO</h2><p>NOVAPLAY necesita abrir la DEMO en una ventana emergente. Al pulsar ABRIR DEMO, la acciÛn se ejecuta directamente por tu clic para reducir el bloqueo del navegador.</p><div class="demo-popup-actions"><button class="demo-popup-btn" id="demo-popup-open">ABRIR DEMO</button><button class="demo-popup-btn alt" id="demo-popup-cancel">CANCELAR</button></div><p id="demo-popup-blocked" style="display:none;color:#ff9b9b;margin-top:16px">El navegador bloqueÛ la ventana. Permite ventanas emergentes para este sitio y vuelve a pulsar ABRIR DEMO.</p></div></div>');
+    '<div class="demo-popup-permission" id="demo-popup-permission"><div class="demo-popup-box"><h2>ABRIR DEMO</h2><p>NOVAPLAY necesita abrir la DEMO en una ventana emergente. Al pulsar ABRIR DEMO, la acci√≥n se ejecuta directamente por tu clic para reducir el bloqueo del navegador.</p><div class="demo-popup-actions"><button class="demo-popup-btn" id="demo-popup-open">ABRIR DEMO</button><button class="demo-popup-btn alt" id="demo-popup-cancel">CANCELAR</button></div><p id="demo-popup-blocked" style="display:none;color:#ff9b9b;margin-top:16px">El navegador bloque√≥ la ventana. Permite ventanas emergentes para este sitio y vuelve a pulsar ABRIR DEMO.</p></div></div>');
   document.getElementById('demo-popup-open').addEventListener('click',abrirDemoNovaPlay);
   document.getElementById('demo-popup-cancel').addEventListener('click',()=>document.getElementById('demo-popup-permission').remove());
 }
