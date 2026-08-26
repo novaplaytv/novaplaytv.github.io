@@ -20,7 +20,7 @@
         * { box-sizing: border-box; }
         html, body { margin: 0; padding: 0; background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* Navegación Premium - Estandarizada */
+        /* Navegación Premium */
         .nova-nav { position: fixed; top: 0; width: 100%; z-index: 10000; background: rgba(0,0,0,0.7); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
         .nav-inner { max-width: 1400px; margin: auto; height: 70px; padding: 0 30px; display: flex; align-items: center; justify-content: space-between; }
         .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; font-weight: 900; font-size: 22px; letter-spacing: -1px; z-index: 10001; }
@@ -30,6 +30,15 @@
         .nav-links a { color: #ccc; text-decoration: none; font-size: 14px; font-weight: 600; transition: 0.2s; padding: 10px 15px; border-radius: 10px; }
         .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.05); }
         .nav-links a.active { color: #e50914; }
+
+        /* Status Badge */
+        .status-badge { padding: 6px 12px; border-radius: 20px; font-size: 10px; font-weight: 800; display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); margin-right: 10px; text-transform: uppercase; }
+        .status-badge.online { color: #4caf50; border-color: rgba(76, 175, 80, 0.3); }
+        .status-badge.maintenance { color: #ffd700; border-color: rgba(255, 215, 0, 0.3); }
+
+        /* Language Toggle */
+        .lang-toggle { background: none; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px 15px; border-radius: 10px; cursor: pointer; font-size: 13px; font-weight: 700; transition: 0.2s; white-space: nowrap; }
+        .lang-toggle:hover { background: rgba(255,255,255,0.05); }
 
         .btn-login-nav, .btn-logout { background: #e50914; color: #fff !important; font-weight: 800 !important; box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3); border: none; cursor: pointer; padding: 10px 20px; border-radius: 10px; text-decoration: none; font-size: 14px; transition: 0.2s; display: none; }
         .btn-login-nav:hover, .btn-logout:hover { transform: scale(1.05); background: #b91c1c; }
@@ -53,6 +62,17 @@
         .dl-title { font-size: 11px; text-transform: uppercase; color: var(--accent); letter-spacing: 2px; font-weight: 800; }
         .dl-code { font-size: 28px; font-family: monospace; font-weight: 900; margin-top: 5px; color: #fff; }
 
+        /* Installation Guide */
+        .guide-section { padding: 100px 20px; max-width: 1200px; margin: auto; text-align: center; }
+        .guide-section h2 { font-size: clamp(32px, 5vw, 40px); font-weight: 900; margin-bottom: 60px; text-transform: uppercase; letter-spacing: -1px; }
+        .guide-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .step-card { background: #0c0c0c; padding: 50px 40px; border-radius: 30px; border: 1px solid #1a1a1a; position: relative; transition: 0.3s; }
+        .step-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .step-number { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 18px; box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4); }
+        .step-icon { font-size: 50px; margin-bottom: 25px; display: block; filter: drop-shadow(0 0 10px rgba(255,255,255,0.1)); }
+        .step-card h3 { margin-bottom: 15px; font-size: 22px; font-weight: 800; }
+        .step-card p { color: #888; font-size: 15px; line-height: 1.6; }
+
         /* Features */
         .features { padding: 80px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 1200px; margin: auto; gap: 30px; }
         .f-card { background: var(--card-bg); padding: 40px; border-radius: 30px; text-align: left; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; }
@@ -60,6 +80,19 @@
         .f-icon { font-size: 40px; margin-bottom: 20px; display: block; }
         .f-card h3 { font-size: 22px; margin: 0 0 15px; color: #fff; }
         .f-card p { color: #888; line-height: 1.6; font-size: 15px; margin: 0; }
+
+        /* FAQ Section */
+        .faq-section { padding: 100px 20px; max-width: 800px; margin: auto; }
+        .faq-section h2 { text-align: center; font-size: clamp(32px, 5vw, 40px); font-weight: 900; margin-bottom: 50px; text-transform: uppercase; }
+        .faq-item { background: #0c0c0c; border-radius: 20px; margin-bottom: 15px; border: 1px solid #1a1a1a; overflow: hidden; transition: 0.3s; }
+        .faq-question { padding: 25px 30px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 18px; transition: 0.3s; }
+        .faq-question:hover { background: #111; }
+        .faq-question::after { content: '+'; font-size: 24px; color: var(--primary); transition: 0.3s; font-weight: 400; }
+        .faq-item.active { border-color: var(--primary); }
+        .faq-item.active .faq-question { color: var(--primary); }
+        .faq-item.active .faq-question::after { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding: 0 30px; color: #888; line-height: 1.7; font-size: 16px; }
+        .faq-item.active .faq-answer { max-height: 300px; padding: 0 30px 30px; }
 
         /* Changelog */
         .changelog { max-width: 900px; margin: 0 auto 100px; padding: 0 20px; text-align: left; }
@@ -70,17 +103,13 @@
         .change-item:hover { background: #111; border-color: #333; }
         .change-item::before { content: "✔"; color: var(--primary); font-weight: 900; }
 
-        footer { padding: 60px 20px; background: #000; border-top: 1px solid #111; text-align: center; }
+        footer { padding: 80px 20px; background: #000; border-top: 1px solid #111; text-align: center; }
         .footer-logo { width: 50px; opacity: 0.3; margin-bottom: 20px; }
         .copyright { font-size: 13px; color: #444; line-height: 1.8; }
 
         /* NovaToast Styles */
         #nova-toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 30000; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
         .nova-toast { background: #1a1a1a; color: #fff; padding: 15px 25px; border-radius: 12px; border-left: 5px solid var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 14px; min-width: 280px; pointer-events: auto; animation: toast-in 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; transition: 0.3s; }
-        .nova-toast.error { border-left-color: #e50914; }
-        .nova-toast.success { border-left-color: #4caf50; }
-        .nova-toast.info { border-left-color: #2196f3; }
-        .nova-toast.warning { border-left-color: var(--accent); }
         .nova-toast.fade-out { opacity: 0; transform: translateX(100px); }
         @keyframes toast-in { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
@@ -95,6 +124,7 @@
             }
             .nav-links.active { right: 0; }
             .nav-links a { font-size: 18px; width: 100%; text-align: center; padding: 15px; border-radius: 15px; }
+            .status-badge { margin: 15px 0; }
 
             .nav-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .nav-toggle.active span:nth-child(2) { opacity: 0; }
@@ -107,11 +137,6 @@
             .btn-download { width: 100%; text-align: center; }
             #nova-toast-container { right: 10px; left: 10px; bottom: 10px; }
             .nova-toast { min-width: auto; }
-        }
-
-        @media (max-width: 480px) {
-            h1 { font-size: 38px; }
-            .f-card { padding: 30px; }
         }
     </style>
 
@@ -135,37 +160,69 @@
 <nav class="nova-nav">
     <div class="nav-inner">
         <a class="nav-brand" href="https://novaplaytv.github.io/">
-            <img src="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp" alt="Logo">
+            <img src="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp" alt="Logo" loading="lazy">
             NOVAPLAY
         </a>
-        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+
+        <div style="display: flex; align-items: center;">
+            <div id="statusBadge" class="status-badge">🟢 CARGANDO ESTADO...</div>
+
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
         <div class="nav-links" id="navLinks">
-            <a href="https://novaplaytv.github.io/" class="active">INICIO</a>
+            <a href="https://novaplaytv.github.io/" class="active" id="nav-home">INICIO</a>
             <a href="https://novaplaytv.github.io/DEMO-NOVAPLAY/" id="demo-link">WEB DEMO</a>
-            <a href="https://novaplaytv.github.io/novaimg/actualizar-icono/" id="navPanelIconos">ICONOS</a>
-            <a href="https://novaplaytv.github.io/panel-canales/" id="navPanelCanales">CANALES</a>
+            <a href="https://novaplaytv.github.io/novaimg/actualizar-icono/" id="nav-icons">ICONOS</a>
+            <a href="https://novaplaytv.github.io/panel-canales/" id="nav-channels">CANALES</a>
             <a href="https://novaplaytv.github.io/panel-canales/" class="btn-login-nav" id="navLogin">INGRESAR</a>
             <button class="btn-logout" id="navLogout" onclick="cerrarSesion()">SALIR</button>
+            <button class="lang-toggle" id="langBtn" onclick="toggleLanguage()">🌐 ES / EN</button>
         </div>
     </div>
 </nav>
 
 <section class="hero">
-    <img src="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp" alt="NovaPlay Logo" class="hero-logo">
-    <h1>ENTRETENIMIENTO<br><span style="color:var(--primary)">SIN LÍMITES.</span></h1>
-    <p class="tagline">La plataforma de IPTV más robusta, optimizada para Smart TVs y dispositivos con bajos recursos. Experimenta la máxima fluidez.</p>
+    <img src="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp" alt="NovaPlay Logo" class="hero-logo" loading="lazy">
+    <h1 id="hero-title">ENTRETENIMIENTO<br><span style="color:var(--primary)">SIN LÍMITES.</span></h1>
+    <p class="tagline" id="hero-tagline">La plataforma de IPTV más robusta, optimizada para Smart TVs y dispositivos con bajos recursos. Experimenta la máxima fluidez.</p>
 
     <div class="cta-container">
-        <a href="https://mrghnngupolsgatcmevw.supabase.co/storage/v1/object/public/novaplayestable/novaplay.apk" class="btn-download">
+        <a href="https://mrghnngupolsgatcmevw.supabase.co/storage/v1/object/public/novaplayestable/novaplay.apk" class="btn-download" id="btn-download">
             DESCARGAR APK OFICIAL
         </a>
         <div class="downloader-box">
-            <div class="dl-title">DOWNLOADER CODE</div>
+            <div class="dl-title" id="dl-title">DOWNLOADER CODE</div>
             <div class="dl-code">7329483</div>
+        </div>
+    </div>
+</section>
+
+<!-- Visual Installation Guide -->
+<section class="guide-section">
+    <h2 id="guide-title">INSTALACIÓN EN 3 PASOS</h2>
+    <div class="guide-steps">
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <span class="step-icon">📥</span>
+            <h3 id="step1-title">Descargar Downloader</h3>
+            <p id="step1-desc">Busca e instala la app 'Downloader' desde la tienda de aplicaciones de tu Fire TV o Android TV.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <span class="step-icon">🔢</span>
+            <h3 id="step2-title">Ingresar el Código</h3>
+            <p id="step2-desc">Abre Downloader y escribe el código 7329483 en la barra de búsqueda para iniciar la descarga.</p>
+        </div>
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <span class="step-icon">✨</span>
+            <h3 id="step3-title">Instalar y Disfrutar</h3>
+            <p id="step3-desc">Abre el archivo descargado, completa la instalación y accede a todo el contenido premium.</p>
         </div>
     </div>
 </section>
@@ -173,18 +230,18 @@
 <section class="features">
     <div class="f-card">
         <span class="f-icon">🚀</span>
-        <h3>Rendimiento Pro</h3>
-        <p>Motor de video ultra-eficiente con optimización SIMD y gestión inteligente de buffers para evitar congelamientos.</p>
+        <h3 id="f1-title">Rendimiento Pro</h3>
+        <p id="f1-desc">Motor de video ultra-eficiente con optimización SIMD y gestión inteligente de buffers para evitar congelamientos.</p>
     </div>
     <div class="f-card">
         <span class="f-icon">🛡️</span>
-        <h3>Blindaje de Red</h3>
-        <p>Conexión segura mediante DNS Over HTTPS (DoH) y protocolos adaptativos para máxima estabilidad global.</p>
+        <h3 id="f2-title">Blindaje de Red</h3>
+        <p id="f2-desc">Conexión segura mediante DNS Over HTTPS (DoH) y protocolos adaptativos para máxima estabilidad global.</p>
     </div>
     <div class="f-card">
         <span class="f-icon">📺</span>
-        <h3>Hecho para TV</h3>
-        <p>Interfaz intuitiva con control total desde el mando a distancia. Zapping rápido y navegación fluida en 4K.</p>
+        <h3 id="f3-title">Hecho para TV</h3>
+        <p id="f3-desc">Interfaz intuitiva con control total desde el mando a distancia. Zapping rápido y navegación fluida en 4K.</p>
     </div>
 </section>
 
@@ -196,8 +253,33 @@
     </div>
 </div>
 
+<!-- FAQ Section -->
+<section class="faq-section">
+    <h2 id="faq-title">Preguntas Frecuentes</h2>
+
+    <div class="faq-item">
+        <div class="faq-question" id="q1">¿Qué es NovaPlay?</div>
+        <div class="faq-answer" id="a1">NovaPlay es una aplicación de entretenimiento premium diseñada para ofrecer la mejor experiencia de streaming con una interfaz optimizada para televisores.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" id="q2">¿Cómo puedo instalarlo?</div>
+        <div class="faq-answer" id="a2">La forma más sencilla es usar el código 7329483 en la aplicación Downloader, o descargar el APK directamente desde el botón superior.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" id="q3">¿Tienen problemas de buffering?</div>
+        <div class="faq-answer" id="a3">Nuestra infraestructura utiliza servidores de alta velocidad y buffers inteligentes. Se recomienda una conexión de al menos 10Mbps para contenido HD/4K.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question" id="q4">¿En qué dispositivos funciona?</div>
+        <div class="faq-answer" id="a4">Es compatible con Fire TV Stick, Xiaomi Mi Box/Stick, Chromecast con Google TV, Smart TVs con Android TV y dispositivos móviles Android.</div>
+    </div>
+</section>
+
 <footer>
-    <img src="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp" alt="Logo" class="footer-logo">
+    <img src="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp" alt="Logo" class="footer-logo" loading="lazy">
     <div class="copyright">
         © 2026 NOVAPLAY TV<br>
         © 2010 - 2026 - MSGT. TODOS LOS DERECHOS RESERVADOS
@@ -206,11 +288,11 @@
 
 <div class="demo-modal" id="demoModal">
     <div class="modal-box">
-        <h2>ABRIR DEMO WEB</h2>
-        <p>Estás a punto de abrir la versión de prueba en tu navegador. Para una mejor experiencia, recomendamos usar nuestra APK oficial.</p>
+        <h2 id="modal-title">ABRIR DEMO WEB</h2>
+        <p id="modal-desc">Estás a punto de abrir la versión de prueba en tu navegador. Para una mejor experiencia, recomendamos usar nuestra APK oficial.</p>
         <div class="modal-btns">
-            <button class="modal-btn btn-go" onclick="lanzarDemo()">ABRIR AHORA</button>
-            <button class="modal-btn btn-no" onclick="cerrarModal()">CANCELAR</button>
+            <button class="modal-btn btn-go" onclick="lanzarDemo()" id="modal-go">ABRIR AHORA</button>
+            <button class="modal-btn btn-no" onclick="cerrarModal()" id="modal-no">CANCELAR</button>
         </div>
     </div>
 </div>
@@ -218,6 +300,190 @@
 <div id="nova-toast-container"></div>
 
 <script>
+    // Translation Data
+    const translations = {
+        es: {
+            nav_home: "INICIO",
+            nav_icons: "ICONOS",
+            nav_channels: "CANALES",
+            nav_login: "INGRESAR",
+            nav_logout: "SALIR",
+            hero_title: "ENTRETENIMIENTO<br><span style='color:var(--primary)'>SIN LÍMITES.</span>",
+            hero_tagline: "La plataforma de IPTV más robusta, optimizada para Smart TVs y dispositivos con bajos recursos. Experimenta la máxima fluidez.",
+            btn_download: "DESCARGAR APK OFICIAL",
+            dl_title: "DOWNLOADER CODE",
+            guide_title: "INSTALACIÓN EN 3 PASOS",
+            step1_title: "Descargar Downloader",
+            step1_desc: "Busca e instala la app 'Downloader' desde la tienda de aplicaciones de tu Fire TV o Android TV.",
+            step2_title: "Ingresar el Código",
+            step2_desc: "Abre Downloader y escribe el código 7329483 en la barra de búsqueda para iniciar la descarga.",
+            step3_title: "Instalar y Disfrutar",
+            step3_desc: "Abre el archivo descargado, completa la instalación y accede a todo el contenido premium.",
+            f1_title: "Rendimiento Pro",
+            f1_desc: "Motor de video ultra-eficiente con optimización SIMD y gestión inteligente de buffers para evitar congelamientos.",
+            f2_title: "Blindaje de Red",
+            f2_desc: "Conexión segura mediante DNS Over HTTPS (DoH) y protocolos adaptativos para máxima estabilidad global.",
+            f3_title: "Hecho para TV",
+            f3_desc: "Interfaz intuitiva con control total desde el mando a distancia. Zapping rápido y navegación fluida en 4K.",
+            faq_title: "Preguntas Frecuentes",
+            q1: "¿Qué es NovaPlay?",
+            a1: "NovaPlay es una aplicación de entretenimiento premium diseñada para ofrecer la mejor experiencia de streaming con una interfaz optimizada para televisores.",
+            q2: "¿Cómo puedo instalarlo?",
+            a2: "La forma más sencilla es usar el código 7329483 en la aplicación Downloader, o descargar el APK directamente desde el botón superior.",
+            q3: "¿Tienen problemas de buffering?",
+            a3: "Nuestra infraestructura utiliza servidores de alta velocidad y buffers inteligentes. Se recomienda una conexión de al menos 10Mbps para contenido HD/4K.",
+            q4: "¿En qué dispositivos funciona?",
+            a4: "Es compatible con Fire TV Stick, Xiaomi Mi Box/Stick, Chromecast con Google TV, Smart TVs con Android TV y dispositivos móviles Android.",
+            system_online: "🟢 SISTEMA OPERATIVO",
+            system_maintenance: "🟡 MANTENIMIENTO",
+            modal_title: "ABRIR DEMO WEB",
+            modal_desc: "Estás a punto de abrir la versión de prueba en tu navegador. Para una mejor experiencia, recomendamos usar nuestra APK oficial.",
+            modal_go: "ABRIR AHORA",
+            modal_no: "CANCELAR",
+            toast_demo: "Iniciando Demo Web...",
+            toast_popup: "Pop-up bloqueado. Por favor, permite ventanas emergentes.",
+            toast_logout: "Sesión cerrada correctamente",
+            toast_error_changelog: "Error al cargar novedades"
+        },
+        en: {
+            nav_home: "HOME",
+            nav_icons: "ICONS",
+            nav_channels: "CHANNELS",
+            nav_login: "LOGIN",
+            nav_logout: "LOGOUT",
+            hero_title: "UNLIMITED<br><span style='color:var(--primary)'>ENTERTAINMENT.</span>",
+            hero_tagline: "The most robust IPTV platform, optimized for Smart TVs and low-resource devices. Experience maximum fluidity.",
+            btn_download: "DOWNLOAD OFFICIAL APK",
+            dl_title: "DOWNLOADER CODE",
+            guide_title: "3-STEP INSTALLATION",
+            step1_title: "Download Downloader",
+            step1_desc: "Search for and install the 'Downloader' app from your Fire TV or Android TV app store.",
+            step2_title: "Enter the Code",
+            step2_desc: "Open Downloader and type the code 7329483 in the search bar to start the download.",
+            step3_title: "Install & Enjoy",
+            step3_desc: "Open the downloaded file, complete the installation, and access all premium content.",
+            f1_title: "Pro Performance",
+            f1_desc: "Ultra-efficient video engine with SIMD optimization and smart buffer management to prevent freezing.",
+            f2_title: "Network Shielding",
+            f2_desc: "Secure connection via DNS Over HTTPS (DoH) and adaptive protocols for maximum global stability.",
+            f3_title: "Made for TV",
+            f3_desc: "Intuitive interface with full remote control. Fast zapping and smooth 4K navigation.",
+            faq_title: "Frequently Asked Questions",
+            q1: "What is NovaPlay?",
+            a1: "NovaPlay is a premium entertainment application designed to provide the best streaming experience with an optimized TV interface.",
+            q2: "How can I install it?",
+            a2: "The easiest way is to use code 7329483 in the Downloader app, or download the APK directly from the button above.",
+            q3: "Do you have buffering issues?",
+            a3: "Our infrastructure uses high-speed servers and smart buffers. A connection of at least 10Mbps is recommended for HD/4K content.",
+            q4: "What devices does it work on?",
+            a4: "Compatible with Fire TV Stick, Xiaomi Mi Box/Stick, Chromecast with Google TV, Android TV Smart TVs, and Android mobile devices.",
+            system_online: "🟢 SYSTEM OPERATIONAL",
+            system_maintenance: "🟡 MAINTENANCE",
+            modal_title: "OPEN WEB DEMO",
+            modal_desc: "You are about to open the trial version in your browser. For a better experience, we recommend using our official APK.",
+            modal_go: "OPEN NOW",
+            modal_no: "CANCEL",
+            toast_demo: "Starting Web Demo...",
+            toast_popup: "Pop-up blocked. Please allow pop-ups.",
+            toast_logout: "Logged out successfully",
+            toast_error_changelog: "Error loading news"
+        }
+    };
+
+    let currentLang = 'es';
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'es' ? 'en' : 'es';
+        document.getElementById('langBtn').innerText = currentLang === 'es' ? '🌐 ES / EN' : '🌐 EN / ES';
+        applyTranslations();
+        checkSystemStatus(); // Update badge text
+    }
+
+    function applyTranslations() {
+        const t = translations[currentLang];
+
+        // Nav
+        document.getElementById('nav-home').innerText = t.nav_home;
+        document.getElementById('nav-icons').innerText = t.nav_icons;
+        document.getElementById('nav-channels').innerText = t.nav_channels;
+        document.getElementById('navLogin').innerText = t.nav_login;
+        document.getElementById('navLogout').innerText = t.nav_logout;
+
+        // Hero
+        document.getElementById('hero-title').innerHTML = t.hero_title;
+        document.getElementById('hero-tagline').innerText = t.hero_tagline;
+        document.getElementById('btn-download').innerText = t.btn_download;
+        document.getElementById('dl-title').innerText = t.dl_title;
+
+        // Guide
+        document.getElementById('guide-title').innerText = t.guide_title;
+        document.getElementById('step1-title').innerText = t.step1_title;
+        document.getElementById('step1-desc').innerText = t.step1_desc;
+        document.getElementById('step2-title').innerText = t.step2_title;
+        document.getElementById('step2-desc').innerText = t.step2_desc;
+        document.getElementById('step3-title').innerText = t.step3_title;
+        document.getElementById('step3-desc').innerText = t.step3_desc;
+
+        // Features
+        document.getElementById('f1-title').innerText = t.f1_title;
+        document.getElementById('f1-desc').innerText = t.f1_desc;
+        document.getElementById('f2-title').innerText = t.f2_title;
+        document.getElementById('f2-desc').innerText = t.f2_desc;
+        document.getElementById('f3-title').innerText = t.f3_title;
+        document.getElementById('f3-desc').innerText = t.f3_desc;
+
+        // FAQ
+        document.getElementById('faq-title').innerText = t.faq_title;
+        document.getElementById('q1').innerText = t.q1;
+        document.getElementById('a1').innerText = t.a1;
+        document.getElementById('q2').innerText = t.q2;
+        document.getElementById('a2').innerText = t.a2;
+        document.getElementById('q3').innerText = t.q3;
+        document.getElementById('a3').innerText = t.a3;
+        document.getElementById('q4').innerText = t.q4;
+        document.getElementById('a4').innerText = t.a4;
+
+        // Modal
+        document.getElementById('modal-title').innerText = t.modal_title;
+        document.getElementById('modal-desc').innerText = t.modal_desc;
+        document.getElementById('modal-go').innerText = t.modal_go;
+        document.getElementById('modal-no').innerText = t.modal_no;
+    }
+
+    // System Status Badge
+    function checkSystemStatus() {
+        fetch("https://mrghnngupolsgatcmevw.supabase.co/storage/v1/object/public/Novaplay/eventos.json")
+            .then(res => res.json())
+            .then(data => {
+                const badge = document.getElementById('statusBadge');
+                if (data.activo) {
+                    badge.className = 'status-badge online';
+                    badge.innerText = translations[currentLang].system_online;
+                } else {
+                    badge.className = 'status-badge maintenance';
+                    badge.innerText = translations[currentLang].system_maintenance;
+                }
+            })
+            .catch(() => {
+                document.getElementById('statusBadge').innerText = "SYSTEM ERROR";
+            });
+    }
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(q => {
+        q.addEventListener('click', () => {
+            const item = q.parentElement;
+            const wasActive = item.classList.contains('active');
+
+            // Close others
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+            if (!wasActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+
     // NovaToast System
     function novaToast(message, type = 'info') {
         const container = document.getElementById('nova-toast-container');
@@ -240,12 +506,12 @@
         }, 4000);
     }
 
-    // Cargar Datos desde Supabase
+    // Cargar Datos desde Supabase (Changelog)
     fetch("https://mrghnngupolsgatcmevw.supabase.co/storage/v1/object/public/Novaplay/updatestable.json")
         .then(res => res.json())
         .then(data => {
             document.getElementById("version-badge").textContent = "VERSIÓN ESTABLE " + data.version;
-            document.getElementById("changelog-title").textContent = "¿Qué hay de nuevo en la v" + data.version + "?";
+            document.getElementById("changelog-title").textContent = (currentLang === 'es' ? "¿Qué hay de nuevo en la v" : "What's new in v") + data.version + "?";
             const container = document.getElementById("changelog-items");
             container.innerHTML = "";
             data.changelog.forEach(text => {
@@ -257,7 +523,7 @@
         })
         .catch(() => {
             document.getElementById("version-badge").textContent = "NOVAPLAY IPTV";
-            novaToast("Error al cargar novedades", "warning");
+            novaToast(translations[currentLang].toast_error_changelog, "warning");
         });
 
     // Toggle Menú Móvil
@@ -293,9 +559,9 @@
         const win = window.open(url, '_blank');
         if (win) {
             cerrarModal();
-            novaToast("Iniciando Demo Web...", "success");
+            novaToast(translations[currentLang].toast_demo, "success");
         } else {
-            novaToast("Pop-up bloqueado. Por favor, permite ventanas emergentes.", "error");
+            novaToast(translations[currentLang].toast_popup, "error");
         }
     }
 
@@ -326,9 +592,12 @@
     function cerrarSesion() {
         localStorage.removeItem("novaimg_session_token");
         localStorage.removeItem("novaplay_session_token");
-        novaToast("Sesión cerrada correctamente", "info");
+        novaToast(translations[currentLang].toast_logout, "info");
         setTimeout(() => location.reload(), 1500);
     }
+
+    // Initial check
+    checkSystemStatus();
 </script>
 
 </body> 
