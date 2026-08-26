@@ -3,313 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVAPLAY - IPTV Premium</title>
+    <title>NOVAPLAY - IPTV Premium y Entretenimiento</title>
     <link rel="icon" type="image/webp" href="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #e50914;
-            --bg-color: #0f0f0f;
-            --card-bg: #1a1a1a;
-            --text-color: #ffffff;
-            --accent-color: #ffd700;
+            --primary: #e50914;
+            --primary-hover: #ff000d;
+            --bg: #050505;
+            --card-bg: #111111;
+            --text: #ffffff;
+            --accent: #ffd700;
+            --nav-height: 70px;
         }
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-        header {
-            padding: 20px 20px;
-            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://raw.githubusercontent.com/novaplaytv/novaplay/main/banner.jpg');
-            background-size: cover;
-            background-position: center;
-            border-bottom: 3px solid var(--primary-color);
-        }
+        /* Navegación Premium */
+        .nova-nav { position: fixed; top: 0; width: 100%; z-index: 10000; background: rgba(0,0,0,0.7); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .nav-inner { max-width: 1400px; margin: auto; height: var(--nav-height); padding: 0 30px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; font-weight: 900; font-size: 22px; letter-spacing: -1px; }
+        .nav-brand img { width: 36px; height: 32px; border-radius: 8px; }
+        .nav-links { display: flex; gap: 15px; align-items: center; }
+        .nav-links a { color: #ccc; text-decoration: none; font-size: 14px; font-weight: 600; transition: 0.2s; padding: 10px 15px; border-radius: 10px; }
+        .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.05); }
+        .nav-links a.active { color: var(--primary); }
+        .btn-login { background: var(--primary); color: #fff !important; font-weight: 800 !important; box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3); }
 
-        .logo-img {
-            max-width: 180px;
-            height: auto;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 0 15px rgba(229, 9, 20, 0.4));
-        }
+        /* Hero Section */
+        .hero { position: relative; padding: 180px 20px 100px; background: linear-gradient(rgba(0,0,0,0.4), var(--bg)), url('https://raw.githubusercontent.com/novaplaytv/novaplay/main/banner.jpg'); background-size: cover; background-position: center; text-align: center; border-bottom: 1px solid var(--border); }
+        .hero-logo { width: 120px; margin-bottom: 30px; filter: drop-shadow(0 0 30px rgba(229, 9, 20, 0.5)); animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        .tagline {
-            font-size: 1.2rem;
-            font-weight: 300;
-            margin-bottom: 30px;
-            color: #eee;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.4;
-        }
+        h1 { font-size: clamp(40px, 8vw, 70px); font-weight: 900; margin: 0; letter-spacing: -2px; line-height: 1; }
+        .tagline { font-size: clamp(16px, 2.5vw, 20px); color: #bbb; max-width: 700px; margin: 25px auto 40px; line-height: 1.6; font-weight: 400; }
 
-        .download-flex-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 30px;
-            padding: 0 10px;
-        }
+        .cta-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; align-items: center; }
+        .btn-download { background: var(--primary); color: #fff; padding: 20px 45px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 18px; box-shadow: 0 10px 30px rgba(229, 9, 20, 0.4); transition: 0.3s; }
+        .btn-download:hover { transform: scale(1.05); background: var(--primary-hover); }
 
-        .download-btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 40px;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(229, 9, 20, 0.4);
-        }
+        .downloader-box { background: rgba(255,255,255,0.05); border: 2px dashed var(--accent); padding: 15px 30px; border-radius: 20px; backdrop-filter: blur(10px); }
+        .dl-title { font-size: 11px; text-transform: uppercase; color: var(--accent); letter-spacing: 2px; font-weight: 800; }
+        .dl-code { font-size: 28px; font-family: monospace; font-weight: 900; margin-top: 5px; color: #fff; }
 
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(229, 9, 20, 0.6);
-            background-color: #ff000d;
-        }
+        /* Features */
+        .features { padding: 100px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 1200px; margin: auto; gap: 30px; }
+        .f-card { background: var(--card-bg); padding: 40px; border-radius: 30px; text-align: left; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; }
+        .f-card:hover { transform: translateY(-15px); border-color: var(--primary); background: #161616; }
+        .f-icon { font-size: 40px; margin-bottom: 20px; display: block; }
+        .f-card h3 { font-size: 22px; margin: 0 0 15px; color: #fff; }
+        .f-card p { color: #888; line-height: 1.6; font-size: 15px; margin: 0; }
 
-        .downloader-box {
-            display: flex;
-            flex-direction: column;
-            background-color: #222;
-            border: 2px dashed var(--accent-color);
-            padding: 10px 25px;
-            border-radius: 15px;
-            min-width: 200px;
-        }
+        /* Changelog */
+        .changelog { max-width: 900px; margin: 0 auto 100px; padding: 0 20px; text-align: left; }
+        .changelog h2 { font-size: 32px; font-weight: 900; border-left: 6px solid var(--primary); padding-left: 20px; margin-bottom: 40px; }
+        .version-tag { display: inline-block; background: #222; color: var(--accent); padding: 6px 15px; border-radius: 10px; font-size: 14px; font-weight: 800; margin-bottom: 20px; }
 
-        .downloader-title {
-            font-size: 0.8rem;
-            color: #aaa;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 2px;
-        }
+        .change-item { background: #0c0c0c; border: 1px solid #1a1a1a; padding: 18px 25px; border-radius: 15px; margin-bottom: 15px; font-size: 16px; display: flex; align-items: center; gap: 15px; transition: 0.2s; }
+        .change-item:hover { background: #111; border-color: #333; }
+        .change-item::before { content: "✔"; color: var(--primary); font-weight: 900; }
 
-        .downloader-code {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            font-family: monospace;
-            line-height: 1.2;
-        }
+        footer { padding: 60px 20px; background: #000; border-top: 1px solid #111; text-align: center; }
+        .footer-logo { width: 50px; opacity: 0.3; margin-bottom: 20px; }
+        .copyright { font-size: 13px; color: #444; line-height: 1.8; }
 
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-            padding: 40px 20px;
-            background-color: #050505;
-        }
-
-        .feature-card {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 20px;
-            width: 280px;
-            text-align: left;
-            border-top: 4px solid transparent;
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-top-color: var(--primary-color);
-            background-color: #222;
-        }
-
-        .feature-card h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-            font-size: 1.3rem;
-        }
-
-        .feature-card p {
-            line-height: 1.5;
-            color: #bbb;
-            font-size: 0.95rem;
-        }
-
-        .changelog-section {
-            padding: 40px 20px;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: left;
-        }
-
-        .changelog-section h2 {
-            color: var(--accent-color);
-            border-bottom: 1px solid #333;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-
-        #changelog-items div {
-            background-color: #151515;
-            margin-bottom: 12px;
-            padding: 12px 18px;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary-color);
-            font-size: 1rem;
-            color: #ddd;
-        }
-
-        .version-badge {
-            display: inline-block;
-            background-color: #333;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-bottom: 15px;
-            color: var(--accent-color);
-        }
-
-        footer {
-            padding: 30px 20px;
-            background-color: #000;
-            font-size: 0.85rem;
-            color: #555;
-            border-top: 1px solid #111;
-        }
-
-        @media (max-width: 600px) {
-            .logo-img { max-width: 140px; }
-            .tagline { font-size: 1rem; }
-            .download-btn { width: 100%; padding: 12px 10px; }
-            .downloader-box { width: 100%; box-sizing: border-box; }
-            .downloader-code { font-size: 1.5rem; }
+        @media (max-width: 768px) {
+            .nav-inner { padding: 0 15px; }
+            .nav-links { display: none; } /* Mobile Menu would go here */
+            h1 { font-size: 45px; }
+            .hero { padding-top: 140px; }
+            .cta-container { flex-direction: column; }
+            .btn-download { width: 100%; text-align: center; }
         }
     </style>
-<style id="nova-global-nav-style">
-.nova-global-nav{position:sticky;top:0;z-index:9999;background:rgba(8,10,16,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.12);font-family:Arial,Helvetica,sans-serif}
-.nova-global-nav-inner{max-width:1400px;margin:auto;min-height:56px;padding:8px 18px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.nova-global-brand{display:flex;align-items:center;gap:9px;color:#fff;text-decoration:none;font-weight:800;margin-right:10px}.nova-global-brand img{width:32px;height:32px;border-radius:8px;object-fit:contain}
-.nova-global-nav a:not(.nova-global-brand){color:#d7dbe4;text-decoration:none;padding:9px 12px;border-radius:9px;font-size:14px;font-weight:700}
-.nova-global-nav a:not(.nova-global-brand):hover,.nova-global-nav a.active{background:#e50914;color:#fff}.nova-global-nav .panel-link{margin-left:0;background:#2563eb!important;color:#fff!important}
-@media(max-width:700px){.nova-global-nav-inner{justify-content:center}.nova-global-brand{width:100%;justify-content:center;margin-right:0}.nova-global-nav .panel-link{margin-left:0}}
-</style>
 
-<style id="demo-popup-style">
-.demo-popup-permission{position:fixed;inset:0;z-index:20000;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.72);backdrop-filter:blur(5px)}
-.demo-popup-box{width:min(480px,100%);background:#11151f;color:#fff;border:1px solid #30394c;border-radius:20px;padding:28px;text-align:center;font-family:Arial,Helvetica,sans-serif;box-shadow:0 24px 80px rgba(0,0,0,.6)}
-.demo-popup-box h2{margin:0 0 12px}.demo-popup-box p{color:#b8c1d1;line-height:1.55}.demo-popup-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
-.demo-popup-btn{border:0;border-radius:11px;padding:13px 18px;font-weight:800;cursor:pointer;background:#e50914;color:#fff}.demo-popup-btn.alt{background:#273044}
-</style>
-
+    <!-- Custom Demo Popup Style -->
+    <style>
+        .demo-modal { position: fixed; inset: 0; z-index: 20000; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); padding: 20px; opacity: 0; pointer-events: none; transition: 0.3s; }
+        .demo-modal.active { opacity: 1; pointer-events: auto; }
+        .modal-box { background: #111; border: 1px solid #333; border-radius: 30px; padding: 40px; width: 100%; max-width: 500px; text-align: center; transform: scale(0.9); transition: 0.3s; }
+        .demo-modal.active .modal-box { transform: scale(1); }
+        .modal-box h2 { font-size: 28px; margin: 0 0 15px; font-weight: 900; }
+        .modal-box p { color: #aaa; margin-bottom: 30px; line-height: 1.5; }
+        .modal-btns { display: flex; gap: 10px; }
+        .modal-btn { flex: 1; border: 0; padding: 15px; border-radius: 15px; font-weight: 800; cursor: pointer; transition: 0.2s; }
+        .btn-go { background: var(--primary); color: #fff; }
+        .btn-go:hover { background: var(--primary-hover); }
+        .btn-no { background: #222; color: #fff; }
+    </style>
 </head>
 <body>
-<nav class="nova-global-nav"><div class="nova-global-nav-inner"><a class="nova-global-brand" href="https://novaplaytv.github.io/"><img src="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp" alt="NOVAPLAY">NOVAPLAY</a><a href="https://novaplaytv.github.io/" class="active">INICIO</a><a href="https://novaplaytv.github.io/DEMO-NOVAPLAY/" class="">DEMO</a><a href="https://novaplaytv.github.io/panel-canales/" style="margin-left: auto;">INICIAR SESIÓN</a></div></nav>
 
-    <header>
-        <img src="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp" alt="NOVAPLAY Logo" class="logo-img">
-        <br>
-        <div id="version-badge" class="version-badge">Cargando versión...</div>
-        <p class="tagline">La plataforma de IPTV más robusta, optimizada para Smart TVs y dispositivos con 1GB de RAM. Disfruta sin límites.</p>
-
-        <div class="download-flex-container">
-            <a href="https://mrghnngupolsgatcmevw.supabase.co/storage/v1/object/public/novaplayestable/novaplay.apk" class="download-btn">
-                DESCARGAR APK ESTABLE
-            </a>
-
-            <div class="downloader-box">
-                <div class="downloader-title">App Downloader</div>
-                <div class="downloader-code">6225435</div>
-            </div>
-        </div>
-    </header>
-
-    <section class="features">
-        <div class="feature-card">
-            <h3>🚀 Rendimiento Pro</h3>
-            <p>Motor de video ultra-eficiente con optimización SIMD y gestión inteligente de buffers para evitar congelamientos.</p>
-        </div>
-        <div class="feature-card">
-            <h3>🛡️ Blindaje de Red</h3>
-            <p>Conexión segura mediante DNS Over HTTPS (DoH) y protocolos adaptativos para máxima estabilidad.</p>
-        </div>
-        <div class="feature-card">
-            <h3>📺 Diseñado para TV</h3>
-            <p>Interfaz intuitiva con control total desde el mando a distancia. Zapping rápido y navegación fluida.</p>
-        </div>
-    </section>
-
-    <div class="changelog-section">
-        <h2 id="changelog-title">Novedades</h2>
-        <div id="changelog-items">
-            <!-- Cargando dinámicamente... -->
+<nav class="nova-nav">
+    <div class="nav-inner">
+        <a class="nav-brand" href="#">
+            <img src="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp" alt="Logo">
+            NOVAPLAY
+        </a>
+        <div class="nav-links">
+            <a href="#" class="active">INICIO</a>
+            <a href="https://novaplaytv.github.io/DEMO-NOVAPLAY/" id="demo-link">WEB DEMO</a>
+            <a href="https://novaplaytv.github.io/panel-canales/" class="btn-login">ACCESO STAFF</a>
         </div>
     </div>
+</nav>
 
-    <footer>
-        <p>© 2026 NOVAPLAY TV</p>
-        <p>© 2010 - 2026 - MSGT. TODOS LOS DERECHOS RESERVADOS</p>
-    </footer>
+<section class="hero">
+    <img src="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp" alt="NovaPlay Logo" class="hero-logo">
+    <h1>ENTRETENIMIENTO<br><span style="color:var(--primary)">SIN LÍMITES.</span></h1>
+    <p class="tagline">La plataforma de IPTV más robusta, optimizada para Smart TVs y dispositivos con bajos recursos. Experimenta la máxima fluidez.</p>
 
-    <script>
-        fetch("https://mrghnngupolsgatcmevw.supabase.co/storage/v1/object/public/Novaplay/updatestable.json")
-            .then(response => response.json()) 
-            .then(data => { 
-                // Actualizar versión en la cabecera
-                document.getElementById("version-badge").textContent = "Versión Estable " + data.version;
-                document.getElementById("changelog-title").textContent = "¿Qué hay de nuevo en la v" + data.version + "?";
- 
-                // Cargar changelog 
-                const container = document.getElementById("changelog-items"); 
-                container.innerHTML = ""; // Limpiar mensaje de carga 
-                data.changelog.forEach(item => { 
-                    const div = document.createElement("div"); 
-                    div.textContent = item; 
-                    container.appendChild(div); 
-                }); 
-            }) 
-            .catch(err => { 
-                console.error("Error cargando changelog:", err); 
-                document.getElementById("version-badge").textContent = "NOVAPLAY IPTV"; 
-                const container = document.getElementById("changelog-items"); 
-                container.innerHTML = "<div>Error al cargar las novedades. Intenta refrescar la página.</div>";
-            }); 
-    </script> 
- 
+    <div class="cta-container">
+        <a href="https://mrghnngupolsgatcmevw.supabase.co/storage/v1/object/public/novaplayestable/novaplay.apk" class="btn-download">
+            DESCARGAR APK OFICIAL
+        </a>
+        <div class="downloader-box">
+            <div class="dl-title">DOWNLOADER CODE</div>
+            <div class="dl-code">6225435</div>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="f-card">
+        <span class="f-icon">🚀</span>
+        <h3>Rendimiento Pro</h3>
+        <p>Motor de video ultra-eficiente con optimización SIMD y gestión inteligente de buffers para evitar congelamientos.</p>
+    </div>
+    <div class="f-card">
+        <span class="f-icon">🛡️</span>
+        <h3>Blindaje de Red</h3>
+        <p>Conexión segura mediante DNS Over HTTPS (DoH) y protocolos adaptativos para máxima estabilidad global.</p>
+    </div>
+    <div class="f-card">
+        <span class="f-icon">📺</span>
+        <h3>Hecho para TV</h3>
+        <p>Interfaz intuitiva con control total desde el mando a distancia. Zapping rápido y navegación fluida en 4K.</p>
+    </div>
+</section>
+
+<div class="changelog">
+    <div id="version-badge" class="version-tag">Cargando versión...</div>
+    <h2 id="changelog-title">Novedades de la Versión</h2>
+    <div id="changelog-items">
+        <!-- Cargando dinámicamente... -->
+    </div>
+</div>
+
+<footer>
+    <img src="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp" alt="Logo" class="footer-logo">
+    <div class="copyright">
+        © 2026 NOVAPLAY TV - Global Streaming Service<br>
+        © 2010 - 2026 - MSGT. TODOS LOS DERECHOS RESERVADOS
+    </div>
+</footer>
+
+<div class="demo-modal" id="demoModal">
+    <div class="modal-box">
+        <h2>ABRIR DEMO WEB</h2>
+        <p>Estás a punto de abrir la versión de prueba en tu navegador. Para una mejor experiencia, recomendamos usar nuestra APK oficial.</p>
+        <div class="modal-btns">
+            <button class="modal-btn btn-go" onclick="lanzarDemo()">ABRIR AHORA</button>
+            <button class="modal-btn btn-no" onclick="cerrarModal()">CANCELAR</button>
+        </div>
+        <p id="blocked-msg" style="display:none; color:var(--primary); font-size:12px; margin-top:15px; font-weight:800;">Pop-up bloqueado. Por favor, permite ventanas emergentes.</p>
+    </div>
+</div>
 
 <script>
-function abrirDemoNovaPlay(){
-  const url='https://novaplaytv.github.io/DEMO-NOVAPLAY/';
-  const w=Math.min(1280,Math.max(800,Math.round(screen.availWidth*.9)));
-  const h=Math.min(820,Math.max(600,Math.round(screen.availHeight*.86)));
-  const left=Math.max(0,Math.round((screen.availWidth-w)/2));
-  const top=Math.max(0,Math.round((screen.availHeight-h)/2));
-  const win=window.open(url,'NOVAPLAY_DEMO','popup=yes,width='+w+',height='+h+',left='+left+',top='+top+',resizable=yes,scrollbars=yes');
-  if(win){win.focus();document.getElementById('demo-popup-permission')?.remove();}
-  else{document.getElementById('demo-popup-blocked').style.display='block';}
-}
-function pedirDemoPopup(){
-  const old=document.getElementById('demo-popup-permission'); if(old) old.remove();
-  document.body.insertAdjacentHTML('beforeend',
-    '<div class="demo-popup-permission" id="demo-popup-permission"><div class="demo-popup-box"><h2>ABRIR DEMO</h2><p>NOVAPLAY necesita abrir la DEMO en una ventana emergente. Al pulsar ABRIR DEMO, la acción se ejecuta directamente por tu clic para reducir el bloqueo del navegador.</p><div class="demo-popup-actions"><button class="demo-popup-btn" id="demo-popup-open">ABRIR DEMO</button><button class="demo-popup-btn alt" id="demo-popup-cancel">CANCELAR</button></div><p id="demo-popup-blocked" style="display:none;color:#ff9b9b;margin-top:16px">El navegador bloqueó la ventana. Permite ventanas emergentes para este sitio y vuelve a pulsar ABRIR DEMO.</p></div></div>');
-  document.getElementById('demo-popup-open').addEventListener('click',abrirDemoNovaPlay);
-  document.getElementById('demo-popup-cancel').addEventListener('click',()=>document.getElementById('demo-popup-permission').remove());
-}
-document.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('a[href="https://novaplaytv.github.io/DEMO-NOVAPLAY/"]').forEach(a=>{
-    a.addEventListener('click',e=>{e.preventDefault();pedirDemoPopup();});
-  });
-});
+    // Cargar Datos desde Supabase
+    fetch("https://mrghnngupolsgatcmevw.supabase.co/storage/v1/object/public/Novaplay/updatestable.json")
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById("version-badge").textContent = "VERSIÓN ESTABLE " + data.version;
+            document.getElementById("changelog-title").textContent = "¿Qué hay de nuevo en la v" + data.version + "?";
+            const container = document.getElementById("changelog-items");
+            container.innerHTML = "";
+            data.changelog.forEach(text => {
+                const div = document.createElement("div");
+                div.className = "change-item";
+                div.textContent = text.replace(/^- /, "");
+                container.appendChild(div);
+            });
+        })
+        .catch(() => {
+            document.getElementById("version-badge").textContent = "NOVAPLAY IPTV";
+        });
+
+    // Lógica de Modal Demo
+    const modal = document.getElementById('demoModal');
+    document.getElementById('demo-link').addEventListener('click', e => {
+        e.preventDefault();
+        modal.classList.add('active');
+    });
+
+    function cerrarModal() { modal.classList.remove('active'); }
+
+    function lanzarDemo() {
+        const url = 'https://novaplaytv.github.io/DEMO-NOVAPLAY/';
+        const win = window.open(url, '_blank');
+        if (win) {
+            cerrarModal();
+        } else {
+            document.getElementById('blocked-msg').style.display = 'block';
+        }
+    }
+
+    // Efecto Scroll Nav
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('.nova-nav');
+        if (window.scrollY > 50) nav.style.background = "rgba(5,5,5,0.95)";
+        else nav.style.background = "rgba(0,0,0,0.7)";
+    });
 </script>
 
 </body> 
 </html>
-
-
