@@ -74,6 +74,16 @@
         .footer-logo { width: 50px; opacity: 0.3; margin-bottom: 20px; }
         .copyright { font-size: 13px; color: #444; line-height: 1.8; }
 
+        /* NovaToast Styles */
+        #nova-toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 30000; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
+        .nova-toast { background: #1a1a1a; color: #fff; padding: 15px 25px; border-radius: 12px; border-left: 5px solid var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 14px; min-width: 280px; pointer-events: auto; animation: toast-in 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; transition: 0.3s; }
+        .nova-toast.error { border-left-color: #e50914; }
+        .nova-toast.success { border-left-color: #4caf50; }
+        .nova-toast.info { border-left-color: #2196f3; }
+        .nova-toast.warning { border-left-color: var(--accent); }
+        .nova-toast.fade-out { opacity: 0; transform: translateX(100px); }
+        @keyframes toast-in { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
         /* Responsividad Mejorada */
         @media (max-width: 900px) {
             .nav-toggle { display: flex; }
@@ -95,6 +105,8 @@
             .hero { padding-top: 140px; }
             .cta-container { flex-direction: column; }
             .btn-download { width: 100%; text-align: center; }
+            #nova-toast-container { right: 10px; left: 10px; bottom: 10px; }
+            .nova-toast { min-width: auto; }
         }
 
         @media (max-width: 480px) {
@@ -200,11 +212,34 @@
             <button class="modal-btn btn-go" onclick="lanzarDemo()">ABRIR AHORA</button>
             <button class="modal-btn btn-no" onclick="cerrarModal()">CANCELAR</button>
         </div>
-        <p id="blocked-msg" style="display:none; color:var(--primary); font-size:12px; margin-top:15px; font-weight:800;">Pop-up bloqueado. Por favor, permite ventanas emergentes.</p>
     </div>
 </div>
 
+<div id="nova-toast-container"></div>
+
 <script>
+    // NovaToast System
+    function novaToast(message, type = 'info') {
+        const container = document.getElementById('nova-toast-container');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        toast.className = `nova-toast ${type}`;
+
+        let icon = '🔔';
+        if (type === 'success') icon = '✅';
+        if (type === 'error') icon = '❌';
+        if (type === 'warning') icon = '⚠️';
+
+        toast.innerHTML = `<span>${icon}</span> <span>${message}</span>`;
+        container.appendChild(toast);
+
+        setTimeout(() => {
+            toast.classList.add('fade-out');
+            setTimeout(() => toast.remove(), 300);
+        }, 4000);
+    }
+
     // Cargar Datos desde Supabase
     fetch("https://mrghnngupolsgatcmevw.supabase.co/storage/v1/object/public/Novaplay/updatestable.json")
         .then(res => res.json())
@@ -222,6 +257,7 @@
         })
         .catch(() => {
             document.getElementById("version-badge").textContent = "NOVAPLAY IPTV";
+            novaToast("Error al cargar novedades", "warning");
         });
 
     // Toggle Menú Móvil
@@ -257,8 +293,9 @@
         const win = window.open(url, '_blank');
         if (win) {
             cerrarModal();
+            novaToast("Iniciando Demo Web...", "success");
         } else {
-            document.getElementById('blocked-msg').style.display = 'block';
+            novaToast("Pop-up bloqueado. Por favor, permite ventanas emergentes.", "error");
         }
     }
 
@@ -289,7 +326,8 @@
     function cerrarSesion() {
         localStorage.removeItem("novaimg_session_token");
         localStorage.removeItem("novaplay_session_token");
-        location.reload();
+        novaToast("Sesión cerrada correctamente", "info");
+        setTimeout(() => location.reload(), 1500);
     }
 </script>
 
