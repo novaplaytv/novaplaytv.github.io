@@ -20,16 +20,17 @@
         * { box-sizing: border-box; }
         html, body { margin: 0; padding: 0; background-color: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* Navegación Premium */
+        /* Navegación Premium - Estandarizada */
         .nova-nav { position: fixed; top: 0; width: 100%; z-index: 10000; background: rgba(0,0,0,0.7); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
-        .nav-inner { max-width: 1400px; margin: auto; height: var(--nav-height); padding: 0 30px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-inner { max-width: 1400px; margin: auto; height: 70px; padding: 0 30px; display: flex; align-items: center; justify-content: space-between; }
         .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; font-weight: 900; font-size: 22px; letter-spacing: -1px; }
         .nav-brand img { width: 36px; height: 32px; border-radius: 8px; }
         .nav-links { display: flex; gap: 15px; align-items: center; }
         .nav-links a { color: #ccc; text-decoration: none; font-size: 14px; font-weight: 600; transition: 0.2s; padding: 10px 15px; border-radius: 10px; }
         .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.05); }
-        .nav-links a.active { color: var(--primary); }
-        .btn-login { background: var(--primary); color: #fff !important; font-weight: 800 !important; box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3); }
+        .nav-links a.active { color: #e50914; }
+        .btn-login-nav, .btn-logout { background: #e50914; color: #fff !important; font-weight: 800 !important; box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3); border: none; cursor: pointer; padding: 10px 20px; border-radius: 10px; text-decoration: none; font-size: 14px; transition: 0.2s; display: none; }
+        .btn-login-nav:hover, .btn-logout:hover { transform: scale(1.05); background: #b91c1c; }
 
         /* Hero Section */
         .hero { position: relative; padding: 180px 20px 100px; background: linear-gradient(rgba(0,0,0,0.4), var(--bg)), url('https://raw.githubusercontent.com/novaplaytv/novaplay/main/banner.jpg'); background-size: cover; background-position: center; text-align: center; border-bottom: 1px solid var(--border); }
@@ -97,14 +98,17 @@
 
 <nav class="nova-nav">
     <div class="nav-inner">
-        <a class="nav-brand" href="#">
+        <a class="nav-brand" href="https://novaplaytv.github.io/">
             <img src="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp" alt="Logo">
             NOVAPLAY
         </a>
         <div class="nav-links">
-            <a href="#" class="active">INICIO</a>
+            <a href="https://novaplaytv.github.io/" class="active">INICIO</a>
             <a href="https://novaplaytv.github.io/DEMO-NOVAPLAY/" id="demo-link">WEB DEMO</a>
-            <a href="https://novaplaytv.github.io/panel-canales/" class="btn-login">ACCESO STAFF</a>
+            <a href="https://novaplaytv.github.io/novaimg/actualizar-icono/" id="navPanelIconos">ICONOS</a>
+            <a href="https://novaplaytv.github.io/panel-canales/" id="navPanelCanales">CANALES</a>
+            <a href="https://novaplaytv.github.io/panel-canales/" class="btn-login-nav" id="navLogin">INGRESAR</a>
+            <button class="btn-logout" id="navLogout" onclick="cerrarSesion()">SALIR</button>
         </div>
     </div>
 </nav>
@@ -216,6 +220,20 @@
         if (window.scrollY > 50) nav.style.background = "rgba(5,5,5,0.95)";
         else nav.style.background = "rgba(0,0,0,0.7)";
     });
+
+    // Session Visibility
+    if (localStorage.getItem("novaimg_session_token") || localStorage.getItem("novaplay_session_token")) {
+        document.getElementById("navLogin").style.display = 'none';
+        document.getElementById("navLogout").style.display = 'block';
+    } else {
+        document.getElementById("navLogin").style.display = 'block';
+        document.getElementById("navLogout").style.display = 'none';
+    }
+    function cerrarSesion() {
+        localStorage.removeItem("novaimg_session_token");
+        localStorage.removeItem("novaplay_session_token");
+        location.reload();
+    }
 </script>
 
 </body> 
