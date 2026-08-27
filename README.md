@@ -1,33 +1,19 @@
-﻿# NovaPlay IPTV - Official Landing Page
+﻿# 🌐 NovaPlay | Sitio Oficial
 
-Bienvenido al repositorio oficial del sitio web de **NovaPlay**, la solución definitiva de IPTV optimizada para dispositivos con recursos limitados.
+Portal web principal de **NovaPlay**, diseñado para ofrecer una experiencia de usuario premium y acceso directo a la mejor plataforma de entretenimiento digital.
 
-## 🚀 Sobre el Proyecto
+## ✨ Características
 
-Este repositorio contiene el código fuente de la página de aterrizaje (landing page) de NovaPlay, diseñada para ofrecer una experiencia de usuario rápida y directa, facilitando el acceso a las versiones estables de la aplicación y sus novedades.
+*   **Interfaz Adaptativa**: Diseño optimizado para dispositivos móviles, tablets y escritorio.
+*   **Guía de Instalación**: Sección visual paso a paso para configurar la aplicación en TV Box y Firestick.
+*   **Estado del Servicio**: Monitor en tiempo real de la operatividad del sistema.
+*   **Centro de Ayuda (FAQ)**: Respuestas a las consultas más frecuentes de los usuarios.
+*   **PWA Ready**: Aplicación web instalable para acceso rápido desde cualquier pantalla.
 
-## 🌐 Visita el sitio
-Puedes ver la página en vivo aquí: [https://novaplaytv.github.io/](https://novaplaytv.github.io/)
+## 🚀 Acceso Directo
 
-## 📦 Características de la App NovaPlay
-
-*   **Rendimiento Pro**: Motor de video optimizado para Smart TVs modestas (Tokyo, Xiaomi, TCL) y dispositivos con 1GB de RAM.
-*   **Blindaje de Red**: Conexión segura mediante DNS Over HTTPS (DoH) para evitar bloqueos de ISP.
-*   **Cero Publicidad**: Bloqueador de anuncios integrado directamente en el reproductor.
-*   **Interfaz Adaptativa**: Diseño intuitivo para mando a distancia y pantallas táctiles.
-
-## 📥 Métodos de Instalación
-
-1.  **Descarga Directa**: Disponible en el sitio web en formato APK.
-2.  **App Downloader**: Código de acceso rápido: `6225435`.
-
-## 🛠️ Tecnologías del Sitio Web
-
-*   **HTML5 / CSS3**: Diseño responsivo y moderno (Dark Mode).
-*   **JavaScript (Vanilla)**: Sistema de carga dinámica del Changelog desde el repositorio de actualizaciones.
-*   **GitHub Pages**: Alojamiento gratuito y de alta disponibilidad.
+Visita el portal en: [https://novaplaytv.github.io/](https://novaplaytv.github.io/)
 
 ---
-© 2026 NOVAPLAY TV
-
-© 2010 - 2026 - MSGT. TODOS LOS DERECHOS RESERVADOS. 
+**Desarrollado por MSGT**  
+© 2026 NovaPlay TV.
