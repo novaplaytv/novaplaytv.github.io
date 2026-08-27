@@ -31,11 +31,6 @@
         .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.05); }
         .nav-links a.active { color: #e50914; }
 
-        /* Status Badge */
-        .status-badge { padding: 6px 12px; border-radius: 20px; font-size: 10px; font-weight: 800; display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); margin-right: 10px; text-transform: uppercase; }
-        .status-badge.online { color: #4caf50; border-color: rgba(76, 175, 80, 0.3); }
-        .status-badge.maintenance { color: #ffd700; border-color: rgba(255, 215, 0, 0.3); }
-
         .btn-login-nav, .btn-logout { background: #e50914; color: #fff !important; font-weight: 800 !important; box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3); border: none; cursor: pointer; padding: 10px 20px; border-radius: 10px; text-decoration: none; font-size: 14px; transition: 0.2s; display: none; }
         .btn-login-nav:hover, .btn-logout:hover { transform: scale(1.05); background: #b91c1c; }
 
@@ -120,7 +115,6 @@
             }
             .nav-links.active { right: 0; }
             .nav-links a { font-size: 18px; width: 100%; text-align: center; padding: 15px; border-radius: 15px; }
-            .status-badge { margin: 15px 0; }
 
             .nav-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .nav-toggle.active span:nth-child(2) { opacity: 0; }
@@ -157,18 +151,17 @@
     <div class="nav-inner">
         <a class="nav-brand" href="https://novaplaytv.github.io/">
             <img src="https://raw.githubusercontent.com/novaplaytv/novaimg/main/novasplash.webp" alt="Logo" loading="lazy">
-            NOVAPLAY
+            <div style="display: flex; flex-direction: column; line-height: 1;">
+                NOVAPLAY
+                <span id="statusBadge" style="font-size: 8px; font-weight: 800; margin-top: 4px; letter-spacing: 0; opacity: 0.8;">🟢 CARGANDO...</span>
+            </div>
         </a>
 
-        <div style="display: flex; align-items: center;">
-            <div id="statusBadge" class="status-badge">🟢 CARGANDO ESTADO...</div>
-
-            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
         <div class="nav-links" id="navLinks">
             <a href="https://novaplaytv.github.io/" class="active" id="nav-home">INICIO</a>
@@ -302,15 +295,15 @@
             .then(data => {
                 const badge = document.getElementById('statusBadge');
                 if (data.activo) {
-                    badge.className = 'status-badge online';
+                    badge.style.color = '#4caf50';
                     badge.innerText = "🟢 Estado: Operativo";
                 } else {
-                    badge.className = 'status-badge maintenance';
+                    badge.style.color = '#ffd700';
                     badge.innerText = "🟡 Estado: En Mantenimiento";
                 }
             })
             .catch(() => {
-                document.getElementById('statusBadge').innerText = "SYSTEM ERROR";
+                document.getElementById('statusBadge').innerText = "🔴 ERROR DE RED";
             });
     }
 
