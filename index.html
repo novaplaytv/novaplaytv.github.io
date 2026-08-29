@@ -165,7 +165,7 @@
         <div class="nav-links" id="navLinks">
             <a href="https://novaplaytv.github.io/" class="active" id="nav-home">INICIO</a>
             <a href="https://novaplaytv.github.io/NovaApps/" id="nav-apps">DESCARGAS</a>
-            <a href="https://novaplaytv.github.io/DEMO-NOVAPLAY/" id="demo-link">WEB DEMO</a>
+            <a href="https://novaplaytv.github.io/DEMO-NOVAPLAY/" id="demo-link">NOVASPORTS</a>
             <a href="https://novaplaytv.github.io/Dashboard/" class="btn-login-nav" id="navLogin">INGRESAR</a>
             <button class="btn-logout" id="navLogout" onclick="cerrarSesion()">SALIR</button>
         </div>
@@ -276,10 +276,10 @@
 
 <div class="demo-modal" id="demoModal">
     <div class="modal-box">
-        <h2 id="modal-title">ABRIR DEMO WEB</h2>
-        <p id="modal-desc">Estás a punto de abrir la versión de prueba en tu navegador. Para una mejor experiencia, recomendamos usar nuestra APK oficial.</p>
+        <h2 id="modal-title">ABRIR NOVASPORTS</h2>
+        <p id="modal-desc">Estás a punto de abrir la señal en vivo de NovaSports en tu navegador. Para una mejor experiencia, recomendamos usar nuestra APK oficial.</p>
         <div class="modal-btns">
-            <button class="modal-btn btn-go" onclick="lanzarDemo()" id="modal-go">ABRIR AHORA</button>
+            <button class="modal-btn btn-go" onclick="lanzarDemo()" id="modal-go">ABRIR SEÑAL</button>
             <button class="modal-btn btn-no" onclick="cerrarModal()" id="modal-no">CANCELAR</button>
         </div>
     </div>
@@ -397,7 +397,7 @@
         const win = window.open(url, '_blank');
         if (win) {
             cerrarModal();
-            novaToast("Iniciando Demo Web...", "success");
+            novaToast("Iniciando NovaSports...", "success");
         } else {
             novaToast("Pop-up bloqueado. Por favor, permite ventanas emergentes.", "error");
         }
