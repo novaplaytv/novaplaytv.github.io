@@ -438,14 +438,11 @@
     function actualizarSesion() {
         const isLoggedIn = localStorage.getItem("novaimg_session_token") || localStorage.getItem("novaplay_session_token");
         const navLogin = document.getElementById("navLogin");
-        const adminMenu = document.getElementById('adminMenu');
 
         if (isLoggedIn) {
             if (navLogin) navLogin.style.display = 'none';
-            if (adminMenu) adminMenu.style.display = 'flex';
         } else {
             if (navLogin) navLogin.style.display = 'block';
-            if (adminMenu) adminMenu.style.display = 'none';
         }
     }
 
