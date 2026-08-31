@@ -34,11 +34,11 @@
         .btn-login-nav, .btn-logout { background: #e50914; color: #fff !important; font-weight: 800 !important; box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3); border: none; cursor: pointer; padding: 10px 20px; border-radius: 10px; text-decoration: none; font-size: 14px; transition: 0.2s; display: none; }
         .btn-login-nav:hover, .btn-logout:hover { transform: scale(1.05); background: #b91c1c; }
 
-        /* Dropdown de Administración Premium - FIX DEFINITIVO */
-        .admin-menu { position: relative; display: none; padding: 10px 0; margin: -10px 0; }
+        /* Dropdown de Administración Premium - BLINDAJE TOTAL V4 */
+        .admin-menu { position: relative; display: flex; align-items: center; height: var(--nav-height); padding: 0 10px; }
         .btn-admin { background: #fff; color: #000; font-weight: 900; border: none; cursor: pointer; padding: 10px 20px; border-radius: 12px; font-size: 13px; display: flex; align-items: center; gap: 10px; transition: 0.2s; position: relative; z-index: 10002; }
         .btn-admin:hover { background: var(--primary); color: #fff; box-shadow: 0 0 20px rgba(229,9,20,0.4); }
-        .dropdown-content { position: absolute; top: 100%; right: 0; background: var(--card-bg); min-width: 260px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; display: none; flex-direction: column; box-shadow: 0 20px 50px rgba(0,0,0,0.8); z-index: 10001; margin-top: 5px; }
+        .dropdown-content { position: absolute; top: 100%; right: 0; background: var(--card-bg); min-width: 280px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; display: none; flex-direction: column; box-shadow: 0 25px 60px rgba(0,0,0,0.9); z-index: 10001; margin-top: -10px; transition: 0.3s; }
         .dropdown-content::before { content: ""; position: absolute; top: -30px; left: 0; right: 0; height: 40px; background: transparent; }
         .admin-menu:hover .dropdown-content { display: flex; }
         .dropdown-content a { padding: 15px 20px; color: #fff !important; text-decoration: none !important; font-size: 13px !important; font-weight: 700 !important; border-bottom: 1px solid rgba(255,255,255,0.03); transition: 0.2s; display: flex; align-items: center; gap: 12px; text-align: left; }
@@ -176,10 +176,10 @@
         </button>
 
         <div class="nav-links" id="navLinks">
-            <a href="https://novaplaytv.github.io/" class="active" id="nav-home">INICIO</a>
+            <a href="https://novaplaytv.github.io/" class="active" id="nav-home" style="color: var(--primary); font-weight: 800;">INICIO</a>
             <a href="https://novaplaytv.github.io/NovaApps/" id="nav-apps">DESCARGAS</a>
             <a href="https://novaplaytv.github.io/DEMO-NOVAPLAY/" id="demo-link">NOVASPORTS</a>
-            <a href="https://novaplaytv.github.io/Dashboard/" class="btn-login-nav" id="navLogin">INGRESAR</a>
+            <button class="btn-login-nav" id="navLogin" onclick="location.href='https://novaplaytv.github.io/Dashboard/'">INGRESAR</button>
             <div class="admin-menu" id="adminMenu">
                 <button class="btn-admin"><i class="fas fa-user-shield"></i> PANEL</button>
                 <div class="dropdown-content">
@@ -437,15 +437,13 @@
     function actualizarSesion() {
         const isLoggedIn = localStorage.getItem("novaimg_session_token") || localStorage.getItem("novaplay_session_token");
         const navLogin = document.getElementById("navLogin");
-        const navLogout = document.getElementById("navLogout");
+        const adminMenu = document.getElementById('adminMenu');
 
         if (isLoggedIn) {
             if (navLogin) navLogin.style.display = 'none';
-            const adminMenu = document.getElementById('adminMenu');
-            if (adminMenu) adminMenu.style.display = 'block';
+            if (adminMenu) adminMenu.style.display = 'flex';
         } else {
             if (navLogin) navLogin.style.display = 'block';
-            const adminMenu = document.getElementById('adminMenu');
             if (adminMenu) adminMenu.style.display = 'none';
         }
     }
