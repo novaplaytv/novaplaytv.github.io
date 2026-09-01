@@ -102,7 +102,18 @@
         .faq-answer { max-height: 0; overflow: hidden; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); padding: 0 30px; color: #888; line-height: 1.7; font-size: 16px; }
         .faq-item.active .faq-answer { max-height: 300px; padding: 0 30px 30px; }
 
-        /* Changelog */
+        /* NovaModal Premium */
+        .nova-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .nova-modal { background: var(--card-bg); border: 1px solid var(--border); border-radius: 30px; width: 100%; max-width: 450px; padding: 40px; box-shadow: 0 25px 60px rgba(0,0,0,0.6); text-align: center; animation: modal-in 0.3s ease-out; }
+        @keyframes modal-in { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .nova-modal h3 { font-size: 22px; font-weight: 900; margin-bottom: 15px; text-transform: uppercase; }
+        .nova-modal p { color: #888; font-size: 15px; margin-bottom: 25px; line-height: 1.5; }
+        .nova-modal input { width: 100%; padding: 15px; background: var(--bg); border: 1px solid var(--border); border-radius: 14px; color: #fff; margin-bottom: 20px; font-size: 15px; }
+        .nova-modal-btns { display: flex; gap: 12px; }
+        .nova-modal-btn { flex: 1; padding: 15px; border-radius: 14px; border: 0; font-weight: 800; cursor: pointer; transition: 0.2s; }
+        .btn-confirm { background: var(--primary); color: #fff; }
+        .btn-cancel { background: #222; color: #fff; }
+        .nova-modal-btn:hover { transform: scale(1.03); }
         .changelog { max-width: 900px; margin: 0 auto 100px; padding: 0 20px; text-align: left; }
         .changelog h2 { font-size: 32px; font-weight: 900; border-left: 6px solid var(--primary); padding-left: 20px; margin-bottom: 40px; }
         .version-tag { display: inline-block; background: #222; color: var(--accent); padding: 6px 15px; border-radius: 10px; font-size: 14px; font-weight: 800; margin-bottom: 20px; }
@@ -122,22 +133,28 @@
 
         /* Responsividad Mejorada */
         @media (max-width: 900px) {
+            .nav-inner { padding: 0 15px; }
             .nav-toggle { display: flex; }
             .nav-links {
                 position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
                 background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(20px);
                 flex-direction: column; justify-content: center; align-items: center;
-                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); gap: 20px; padding: 40px;
+                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); gap: 15px; padding: 40px;
             }
             .nav-links.active { right: 0; }
             .nav-links a { font-size: 18px; width: 100%; text-align: center; padding: 15px; border-radius: 15px; }
+
+            /* Ajuste del botón PANEL en móvil */
+            .admin-menu { width: 100%; height: auto; justify-content: center; padding: 0; }
+            .btn-admin { width: 100%; justify-content: center; padding: 18px; font-size: 16px; border-radius: 15px; }
+            .dropdown-content { position: relative; width: 100%; top: 0; margin-top: 10px; opacity: 1; visibility: visible; transform: none; box-shadow: none; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); }
+            .dropdown-content a { padding: 15px; font-size: 14px !important; }
 
             .nav-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .nav-toggle.active span:nth-child(2) { opacity: 0; }
             .nav-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-            .nav-inner { padding: 0 20px; }
-            h1 { font-size: 45px; }
+            h1 { font-size: 40px; }
             .hero { padding-top: 140px; }
             .cta-container { flex-direction: column; }
             .btn-download { width: 100%; text-align: center; }
@@ -315,6 +332,21 @@
 
 <div id="nova-toast-container"></div>
 
+<div class="nova-modal-overlay" id="novaModal">
+    <div class="nova-modal">
+        <h3 id="novaModalTitle" style="font-weight:900;">Confirmar</h3>
+        <p id="novaModalMessage"></p>
+        <div id="modalInputContainer" class="hidden">
+            <input type="text" id="modalInput" placeholder="...">
+            <select id="modalSelect" class="hidden"></select>
+        </div>
+        <div class="nova-modal-btns">
+            <button class="nova-modal-btn btn-cancel" id="novaModalCancel">CANCELAR</button>
+            <button class="nova-modal-btn btn-confirm" id="novaModalConfirm">ACEPTAR</button>
+        </div>
+    </div>
+</div>
+
 <script>
     // System Status Badge
     function checkSystemStatus() {
@@ -456,10 +488,50 @@
     actualizarSesion();
 
     function cerrarSesion() {
-        localStorage.removeItem("novaimg_session_token");
-        localStorage.removeItem("novaplay_session_token");
-        novaToast("Sesión cerrada correctamente", "info");
-        setTimeout(() => location.reload(), 1500);
+        openModal("Cerrar Sesión", "¿Estás seguro que deseas salir de NovaPlay?", () => {
+            localStorage.removeItem("novaimg_session_token");
+            localStorage.removeItem("novaplay_session_token");
+            novaToast("Sesión cerrada correctamente", "info");
+            setTimeout(() => location.reload(), 1500);
+        });
+    }
+
+    /* NovaModal Premium */
+    function openModal(title, msg, onConfirm, type = "confirm", options = [], defaultValue = "") {
+        const m = document.getElementById("novaModal");
+        if (!m) return;
+        document.getElementById("novaModalTitle").innerText = title;
+        document.getElementById("novaModalMessage").innerText = msg;
+        const inputContainer = document.getElementById("modalInputContainer");
+        const input = document.getElementById("modalInput");
+        const select = document.getElementById("modalSelect");
+
+        if (inputContainer) inputContainer.classList.add("hidden");
+        if (input) input.classList.add("hidden");
+        if (select) select.classList.add("hidden");
+
+        if (type === "prompt") {
+            inputContainer.classList.remove("hidden");
+            input.classList.remove("hidden");
+            input.value = defaultValue;
+            setTimeout(() => input.focus(), 100);
+        } else if (type === "select") {
+            inputContainer.classList.remove("hidden");
+            select.classList.remove("hidden");
+            select.innerHTML = options.map(o => `<option value="${o.value}">${o.text}</option>`).join('');
+            setTimeout(() => select.focus(), 100);
+        }
+
+        m.style.display = "flex";
+
+        const close = () => { m.style.display = "none"; };
+        document.getElementById("novaModalCancel").onclick = close;
+        document.getElementById("novaModalConfirm").onclick = () => {
+            if (type === "prompt") onConfirm(input.value);
+            else if (type === "select") onConfirm(select.value);
+            else onConfirm();
+            close();
+        };
     }
 
     // Initial check
